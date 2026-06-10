@@ -3,21 +3,21 @@ import React, { useState } from 'react'
 
 const Signup = () => {
 
-  // Bellow are our hooks that enables us to store the state of our application
+  //step 1. Bellow are our hooks that enables us to store the state of our application
   const[username,setusername]= useState("")
   const[email,setemail]= useState("")
   const[password,setpassword]=useState("")
   const[phone,setphone]=useState("")
 
-  // three additional hooks
+  //step 3. three additional hooks
   const[loading,setloading]=useState("")
   const[error,seterror]=useState("")
   const[success,setsuccess] =useState("")
 
-  // Bellow is our function
+  //step 4. Bellow is our function
   const handlesubmit =async(e)=>{
     // prevent defaults - it means yoou are preventing the browser  from reloading when a
-    // user submits details for registration
+    //step 5. user submits details for registration
     e.preventDefault()
 
     // step 6.update loading page
