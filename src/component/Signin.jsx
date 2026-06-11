@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Signin = () => {
 
@@ -11,6 +12,10 @@ const Signin = () => {
     const[loading,setloading]=useState("")
     const[success,setsuccess]=useState("")
     const[error,seterror]=useState("")
+
+    // step 14.create a usenavigate hook that wiil enable you to redirect users to the homepage 
+    // after a successful login in.
+    const navigate =useNavigate()
 
     // step4. create a function to handle submit action
     const handlesubmit =async(e)=>{
@@ -40,14 +45,16 @@ const Signin = () => {
         // as a response from the hosted api.if there is ,it meanes the user has entered corect  details 
         // give a response tothe user meaning the details he entered are incorrect.
         if(response.data.success==="welcome"){
-          setsuccess("login success")
+          // setsuccess("login success")
+          // bellow we redirect our user to home page
+         navigate("/") 
         }
         else{
-          setsuccess("login unsuccessful")
+          seterror("login unsuccessful")
         }
      }
      catch(error){
-      // step13. setoading back to default and update the error hook just incase there ie an error
+      // step13. set loading back to default and update the error hook just incase there is an error
       setloading("")
       seterror("sorry, something wrong happened .please try again...")
      }
@@ -59,8 +66,8 @@ const Signin = () => {
             <h1>Signin</h1>
 
             <h4 className='text-info'>{loading}</h4>
-            <h4 className='text-info'>{success}</h4>
-            <h4 className='text-info'>{error}</h4>
+            <h4 className='text-success'>{success}</h4>
+            <h4 className='text-danger'>{error}</h4>
 
             <form onSubmit={handlesubmit}>
               {/* step 2 .test the hooks */}
