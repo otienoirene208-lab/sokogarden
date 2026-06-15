@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const Getproduct = () => {
 
@@ -7,6 +8,8 @@ const Getproduct = () => {
   const[loading,setloading]=useState("")
   const[products,setproducts]=useState([])
   const[error,seterror]=useState("")
+
+  const navigate =useNavigate()
 
   // bellow is the image url
   const img_url ="https://adhiambo.alwaysdata.net/static/images/"
@@ -45,6 +48,7 @@ const Getproduct = () => {
       <h3 className='text-center'>Available product</h3>
 
       <h3 className='text-info'>{loading}</h3>
+    <h3 className='text-danger'>{error}</h3>
      {/* map the products */}
      {products.map((product)=>(
              <div className='col-md-3 justify-content-center mb-4'>
@@ -56,6 +60,11 @@ const Getproduct = () => {
                <p className='prodDesc'>{product.product_description.slice(0,50)}...</p>
      
                <h2 className='prodcost'>Ksh {product.product_cost}</h2>
+
+               <button className='btn btn-outline-info'
+               onClick={()=> navigate('/makepayment',{state:{product}})}
+               
+               >purchase now</button>
              </div>
            </div>
      ))}
