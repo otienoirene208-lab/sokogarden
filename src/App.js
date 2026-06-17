@@ -7,6 +7,9 @@ import Addproduct from './component/Addproduct';
 import Notfound from './component/Notfound';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Makepayment from './component/Makepayment';
+import Navbar from './component/Navbar';
+import Footer from './component/Footer';
+import Mycarousel from './component/Carousel';
 
 function App() {
   return (
@@ -15,6 +18,12 @@ function App() {
       <header className="App-header">
         <h1>Sokogarden buy and sell online</h1>
       </header>
+
+       {/* the navigation component */}
+       <Navbar/>
+
+        {/* carousel components] */}
+        <Mycarousel/>
 
       <Routes>
         <Route path='/' element={<Getproduct/>}/>
@@ -25,6 +34,9 @@ function App() {
         <Route path='*'element={<Notfound/>}/>
         
       </Routes>
+
+        {/* footer component */}
+     <Footer/>
 
     </div>
     </Router>

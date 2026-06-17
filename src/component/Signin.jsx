@@ -47,6 +47,8 @@ const Signin = () => {
         if(response.data.success==="welcome"){
           // setsuccess("login success")
           // bellow we redirect our user to home page
+
+          localStorage.setItem("user", JSON.stringify(response.data.user));
          navigate("/") 
         }
         else{
